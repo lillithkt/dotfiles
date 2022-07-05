@@ -1,1 +1,5 @@
 alias inst="sudo apt install -y"
+alias aliases="vi ~/.aliases && source ~/.aliases"
+alias tmp="cd $(mktemp -d)"
+alias temp="tmp"
+alias tmpdone="TEMPDONE=$(pwd) && cd ~ && rm -rf $TEMPDONE"
