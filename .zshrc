@@ -103,6 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.profile
 source ~/.aliases
 PROMPT="%F{75}● %f%F{75}%n%f%F{white}@%f%F{75}%m%f: %F{177}%~%f $ "
 cd ~
