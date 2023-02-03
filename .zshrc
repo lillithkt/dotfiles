@@ -105,8 +105,25 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+#[[ $(tty) == /dev/tty1 && ! $DISPLAY ]] && exec "sudo xinit"
+#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec X vt1 &>/dev/null
+
+if ! pgrep spotifyd >/dev/null 2>&1; then
+    spotifyd
+fi
+
 source ~/.profile
 source ~/.aliases
 PROMPT="%F{75}● %f%F{75}%n%f%F{white}@%f%F{75}%m%f: %F{177}%~%f $ "
 cd ~
+if [ "$TMUX" = "" ]; then set -o ignoreeof; fi
+#export TMUX_TMPDIR=~/.tmux/tmp
 
+# bun completions
+[ -s "/home/luna/.bun/_bun" ] && source "/home/luna/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

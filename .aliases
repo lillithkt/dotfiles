@@ -12,3 +12,4 @@ alias makeprod="sudo rm -rf packages && mkdir packages && make clean package FIN
 alias pushrepo='mkdir -p ~/Silica/Packages/$(basename $(pwd)) && rm -f ~/Silica/Packages/$(basename $(pwd))/*.deb; cp packages/*.deb ~/Silica/Packages/$(basename $(pwd))/'
 alias makerepo="makeprod && pushrepo"
 alias code='echo "http://code.lvna.me/?folder=$(pwd)"'
+alias disp="export DISPLAY=:0"
