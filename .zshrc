@@ -110,9 +110,13 @@ source $ZSH/oh-my-zsh.sh
 #[[ $(tty) == /dev/tty1 && ! $DISPLAY ]] && exec "sudo xinit"
 #[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec X vt1 &>/dev/null
 
-if ! pgrep spotifyd >/dev/null 2>&1; then
-    spotifyd
+if [ `hostname` = "sappho" ]; then
+
+    if ! pgrep spotifyd >/dev/null 2>&1; then
+        spotifyd
+    fi
 fi
+
 
 source ~/.profile
 source ~/.aliases
