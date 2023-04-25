@@ -120,8 +120,32 @@ fi
 
 source ~/.profile
 source ~/.aliases
-PROMPT="%F{75}● %f%F{75}%n%f%F{white}@%f%F{75}%m%f: %F{177}%~%f $ "
-cd ~
+
+#if GITHUB_USER is set
+if [ -n "$GITHUB_USER" ]; then
+    # bash theme - partly inspired by https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/robbyrussell.zsh-theme
+    local gitbranch='`\
+        if [ "$(git config --get devcontainers-theme.hide-status 2>/dev/null)" != 1 ] && [ "$(git config --get codespaces-theme.hide-status 2>/dev/null)" != 1 ]; then \
+            export BRANCH=$(git --no-optional-locks symbolic-ref --short HEAD 2>/dev/null || git --no-optional-locks rev-parse --short HEAD 2>/dev/null); \
+            if [ "${BRANCH}" != "" ]; then \
+                echo -n "%f%F{75}(%f%F{red}%B${BRANCH}" \
+                && if [ "$(git config --get devcontainers-theme.show-dirty 2>/dev/null)" = 1 ] && \
+                    git --no-optional-locks ls-files --error-unmatch -m --directory --no-empty-directory -o --exclude-standard ":/*" > /dev/null 2>&1; then \
+                        echo -n " %f%F{33}✗"; \
+                fi \
+                && echo -n "%b%f%F{75})"; \
+            fi; \
+        fi`'
+    PROMPT="%F{75}● %f%F{75}${GITHUB_USER}%f%F{white}@%f%F{177}%~ ${gitbranch}%f:%f $ "
+else
+    PROMPT="%F{75}● %f%F{75}%n%f%F{white}@%f%F{75}%m%f: %F{177}%~%f $ "
+fi
+
+
+
+
+
+
 if [ "$TMUX" = "" ]; then set -o ignoreeof; fi
 #export TMUX_TMPDIR=~/.tmux/tmp
 
