@@ -143,7 +143,8 @@ fi
 
 
 
-
+source ~/.zshrc.local
+source ~/.aliases.local
 
 
 if [ "$TMUX" = "" ]; then set -o ignoreeof; fi
