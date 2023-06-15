@@ -1,17 +1,4 @@
 alias inst="sudo apt install -y"
 alias aliases="vi ~/.aliases && source ~/.aliases"
-alias tmp="cd $(mktemp -d)"
-alias temp="tmp"
-alias tmpdone="TEMPDONE=$(pwd) && cd ~ && rm -rf $TEMPDONE"
-alias ssl="sudo certbot"
 alias edservice="sudo systemctl daemon-reload && sudo systemctl restart"
-alias rmtssh="ssh mobile@127.0.0.1 -p 2200"
-alias rmtfs="sshfs root@127.0.0.1:/ ~/iphone -p 2200"
-alias hist="cat ~/.zsh_history | grep"
-alias makeprod="sudo rm -rf packages && mkdir packages && make clean package FINALPACKAGE=1"
-alias pushrepo='mkdir -p ~/Silica/Packages/$(basename $(pwd)) && rm -f ~/Silica/Packages/$(basename $(pwd))/*.deb; cp packages/*.deb ~/Silica/Packages/$(basename $(pwd))/'
-alias makerepo="makeprod && pushrepo"
-alias code2='echo "http://code.lvna.me/?folder=$(pwd)"'
 alias disp="export DISPLAY=:0"
-alias cgen='tmux new-window && tmux send-keys "cd ~/Clangen" Enter && tmux split -v && tmux send-keys "sudo X" Enter && tmux select-pane -t 0 && tmux send-keys "DISPLAY=:0 python3 main.py" Enter && tmux select-pane -t 1 && tmux split -h && sleep 1 && tmux send-keys "cgen2" Enter'
-alias cgen2='xwininfo -d :0 -name "Clan Generator" | grep -P "0x[\w\d]{6}" -o -m 1 | xargs /usr/bin/sudo x11vnc -forever -q -nopw -id'
