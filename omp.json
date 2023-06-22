@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palettes": {
+    "template": "{{ if .Root }}root{{ else }}user{{ end }}",
+    "list": {
+      "root": {
+        "username": "#af005f",
+        "folder": "#af00af",
+        "failure": "#af0000"
+      },
+      "user": {
+        "username": "#5fafff",
+        "folder": "#d787ff",
+        "failure": "#af005f"
+      }
+    }
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "p:username",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}p:failure{{ else }}p:username{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "\u25cf ",
+          "type": "exit"
+        },
+        {
+          "foreground": "p:username",
+          "properties": {
+            "prefix": " "
+          },
+          "style": "plain",
+          "template": "{{ .UserName }}",
+          "type": "text"
+        },
+        {
+          "foreground": "#ffffff",
+          "style": "plain",
+          "template": "@",
+          "type": "text"
+        },
+        {
+          "foreground": "p:username",
+          "style": "plain",
+          "template": "{{ .HostName }}",
+          "type": "text"
+        },
+        {
+          "foreground": "#ffffff",
+          "properties": {
+            "suffix": " "
+          },
+          "style": "plain",
+          "template": ":",
+          "type": "text"
+        },
+        {
+          "foreground": "p:folder",
+          "properties": {
+            "style": "folder"
+          },
+          "style": "plain",
+          "template": " {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "#D0666F",
+          "properties": {
+            "branch_icon": ""
+          },
+          "style": "plain",
+          "template": "<#5FAAE8>git:(</>{{ .HEAD }}<#5FAAE8>)</> ",
+          "type": "git"
+        },
+        {
+          "foreground": "#ffffff",
+          "style": "plain",
+          "template": "$",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
