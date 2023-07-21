@@ -74,6 +74,7 @@ plugins=(
   git
   sudo
   zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 $ () {
     "$@"
@@ -117,6 +118,8 @@ if [ `hostname` = "sappho" ]; then
     fi
 fi
 
+autoload -Uz compinit
+compinit
 
 source ~/.profile
 source ~/.aliases
