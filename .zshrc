@@ -124,6 +124,7 @@ autoload -Uz compinit
 compinit
 
 source ~/.profile
+source ~/.profile.local
 source ~/.aliases
 
 #if GITHUB_USER is set
@@ -143,9 +144,12 @@ if [ -n "$GITHUB_USER" ]; then
         fi`'
     PROMPT="%F{75}● %f%F{75}${GITHUB_USER}%f%F{white}@%f%F{177}%~ ${gitbranch}%f:%f $ "
 else
-    PROMPT="%F{75}● %f%F{75}%n%f%F{white}@%f%F{75}%m%f: %F{177}%~%f $ "
+    if [[ $UID == 0 || $EUID == 0 ]]; then
+	PROMPT="%F{125}● %f%F{125}%n%f%F{white}@%f%F{125}%m%f: %F{177}%~%f $ "
+    else
+	PROMPT="%F{75}● %f%F{75}%n%f%F{white}@%f%F{75}%m%f: %F{177}%~%f $ "
+    fi
 fi
-
 
 
 source ~/.zshrc.local
@@ -164,3 +168,8 @@ export PATH="$BUN_INSTALL/bin:$HOME/.yarn/bin:$PATH"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+export ANDROID_HOME=/opt/homebrew/share/android-sdk
+# bun completions
+[ -s "/Users/luna/.bun/_bun" ] && source "/Users/luna/.bun/_bun"
+
+[[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
