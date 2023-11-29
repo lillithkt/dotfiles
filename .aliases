@@ -1,0 +1,1 @@
+alias aliases="vi ~/.aliases && source ~/.aliases"
