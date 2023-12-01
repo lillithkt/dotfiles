@@ -1,2 +1,3 @@
 alias edservice="sudo systemctl daemon-reload && sudo systemctl restart"
 alias disp="export DISPLAY=:0"
+alias sshproxy="ssh -o ProxyCommand='ncat -x 127.0.0.1:9091 %h %p'"
