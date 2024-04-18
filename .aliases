@@ -1,1 +1,2 @@
 alias aliases="vi ~/.aliases && source ~/.aliases"
+alias vi="vim"
