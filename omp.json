@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palettes": {
+    "list": {
+      "root": {
+        "failure": "#af0000",
+        "folder": "#af00af",
+        "username": "#af005f"
+      },
+      "user": {
+        "failure": "#af005f",
+        "folder": "#d787ff",
+        "username": "#5fafff"
+      }
+    },
+    "template": "{{ if .Root }}root{{ else }}user{{ end }}"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "always_enabled": true
+          },
+          "template": "\u25cf ",
+          "foreground": "p:username",
+          "type": "exit",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}p:failure{{ else }}p:username{{ end }}"
+          ]
+        },
+        {
+          "properties": {
+            "prefix": " "
+          },
+          "template": "{{ .UserName }}",
+          "foreground": "p:username",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "template": "@",
+          "foreground": "#ffffff",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "template": "{{ .HostName }}",
+          "foreground": "p:username",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "suffix": " "
+          },
+          "template": ":",
+          "foreground": "#ffffff",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "style": "folder"
+          },
+          "template": " {{ .Path }} ",
+          "foreground": "p:folder",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "branch_icon": ""
+          },
+          "template": "<#5FAAE8>git:(</>{{ .HEAD }}<#5FAAE8>)</> ",
+          "foreground": "#D0666F",
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "template": "$",
+          "foreground": "#ffffff",
+          "type": "text",
+          "style": "plain"
+        }
+      ]
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
