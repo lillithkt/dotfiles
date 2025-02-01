@@ -1,0 +1,8 @@
+if [[ $(playerctl status 2> /dev/null) == "Playing" ]]; then
+    TITLE=$(playerctl metadata title)
+    ARTIST=$(playerctl metadata artist)
+    # %F{75}♫ %F{177}artist - title %F{75}♫ %F{177}
+    PROMPT+=': %F{75}♫ %F{177}'"$ARTIST"' - '"$TITLE"' %F{75}♫%f'
+fi
+
+echo $PROMPT > /tmp/promptcmd

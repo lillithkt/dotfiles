@@ -1,0 +1,10 @@
+[Unit]
+Description=Refresh promptcmd
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'while true; do $HOME/.promptcmd; sleep 5; done'
+Restart=always
+
+[Install]
+WantedBy=default.target
